@@ -17,9 +17,10 @@ public class ArrayUtility {
 //        Collections.rotate(res, array.length - index);
 //        return res.toArray(new Integer[array.length]);
         // no built-in methods
-        for (int i = 0; i < array.length - 1; i++) {
-            int shift = (i - index + array.length) % array.length;
-            array[shift] = array[i];
+        Integer[] copy = Arrays.copyOf(array, array.length);
+        for (int i = 0; i < array.length; i++) {
+            int shift = (i + index + array.length) % array.length;
+            array[i] = copy[shift];
         }
         return array;
     }
